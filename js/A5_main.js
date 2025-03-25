@@ -106,7 +106,7 @@ async function main(tableId) {
 
 function getLegislators(term) {
   return new Promise((resolve, reject) => {
-    const url = `https://ly.govapi.tw/legislator/${term}?limit=300`;
+    const url = `https://v1.ly.govapi.tw/legislator/${term}?limit=300`;
     $.getJSON(url, function(data) {
       resolve(data.legislators);
     });
@@ -115,7 +115,7 @@ function getLegislators(term) {
 
 function getType1Committees() {
   return new Promise((resolve, reject) => {
-    $.getJSON("https://ly.govapi.tw/committee", function(data) {
+    $.getJSON("https://v1.ly.govapi.tw/committee", function(data) {
       let type1Committees = data.committees.filter(comt => comt.comtType === 1);
       type1Committees = type1Committees.reduce((acc, comt) => {
         acc[comt.comtCd] = comt.comtName;
@@ -128,7 +128,7 @@ function getType1Committees() {
 
 function getLegislatorLawBills(term, sessionPeriod) {
   return new Promise((resolve, reject) => {
-    const url = `https://ly.govapi.tw/bill/?term=${term}&sessionPeriod=${sessionPeriod}` +
+    const url = `https://v1.ly.govapi.tw/bill/?term=${term}&sessionPeriod=${sessionPeriod}` +
       "&bill_type=法律案&bill_type=修憲案&proposal_type=委員提案&limit=2000&field=提案人";
     $.getJSON(url, function(data) {
       resolve(data.bills);

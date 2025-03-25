@@ -93,7 +93,7 @@ async function main() {
 
 function getLegislators(term) {
   return new Promise((resolve, reject) => {
-    const url = `https://ly.govapi.tw/legislator/${term}?limit=300`;
+    const url = `https://v1.ly.govapi.tw/legislator/${term}?limit=300`;
     $.getJSON(url, function(data) {
       resolve(data.legislators);
     });
@@ -102,7 +102,7 @@ function getLegislators(term) {
 
 function getLegislatorLawBills(term, sessionPeriod) {
   return new Promise((resolve, reject) => {
-    const url = `https://ly.govapi.tw/bill/?term=${term}&sessionPeriod=${sessionPeriod}` +
+    const url = `https://v1.ly.govapi.tw/bill/?term=${term}&sessionPeriod=${sessionPeriod}` +
       "&bill_type=法律案&bill_type=修憲案&proposal_type=委員提案&limit=2000&field=提案人";
     $.getJSON(url, function(data) {
       resolve(data.bills);
