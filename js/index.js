@@ -19,7 +19,7 @@ async function main() {
 
 function getStat() {
   return new Promise((resolve, reject) => {
-    const url = "https://v1.ly.govapi.tw/stat";
+    const url = "https://ly.govapi.tw/v1/stat";
     $.getJSON(url, function(data) { resolve(data) });
   });
 }

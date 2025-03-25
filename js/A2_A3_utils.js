@@ -22,7 +22,7 @@ function renderTitle(term, sessionPeriod) {
 
 function getCommitteeName(comtCd) {
   return new Promise((resolve, reject) => {
-    const url = `https://v1.ly.govapi.tw/committee/${comtCd}`;
+    const url = `https://ly.govapi.tw/v1/committee/${comtCd}`;
     $.getJSON(url, function(data) {
       resolve(data.comtName);
     });
@@ -31,7 +31,7 @@ function getCommitteeName(comtCd) {
 
 function getLegislators(term) {
   return new Promise((resolve, reject) => {
-    const url = `https://v1.ly.govapi.tw/legislator/${term}?limit=300`;
+    const url = `https://ly.govapi.tw/v1/legislator/${term}?limit=300`;
     $.getJSON(url, function(data) {
       resolve(data.legislators);
     });
@@ -67,7 +67,7 @@ function renderTableHeaders(comtLegislators) {
 
 function getMeetings(term, sessionPeriod, comtCd) {
   return new Promise((resolve, reject) => {
-    const url = "https://v1.ly.govapi.tw/meet/" +
+    const url = "https://ly.govapi.tw/v1/meet/" +
         "?term=" + term +
         "&sessionPeriod=" + sessionPeriod +
         "&committee_id=" + comtCd;
